@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect untuk URL pendek (abaikan Base64)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^s/([a-zA-Z0-9]+) redirect.php?code=$1 [L,QSA]
+
+# Redirect untuk URL bersih
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)$ landing.php?id=$1 [L,QSA]
